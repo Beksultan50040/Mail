@@ -2,8 +2,8 @@ package com.example.demo.services.impl;
 
 import com.example.demo.dao.EmployeeRepo;
 import com.example.demo.mappers.EmployeeMapper;
-import com.example.demo.models.Employee;
-import com.example.demo.models.dto.EmployeeDto;
+import com.example.demo.models.Mail;
+import com.example.demo.models.dto.MailDto;
 import com.example.demo.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,31 +18,31 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Override
-    public EmployeeDto save(EmployeeDto employeeDto) {
-        Employee employee = EmployeeMapper.INSTANCE.toEntity(employeeDto);
-        employee.setStatus("In process");
-        employee = employeeRepo.save(employee);
-        return EmployeeMapper.INSTANCE.toDto(employee);
+    public MailDto save(MailDto mailDto) {
+        Mail mail = EmployeeMapper.INSTANCE.toEntity(mailDto);
+        mail.setStatus("In process");
+        mail = employeeRepo.save(mail);
+        return EmployeeMapper.INSTANCE.toDto(mail);
     }
 
     @Override
-    public EmployeeDto update(EmployeeDto employeeDto) {
+    public MailDto update(MailDto mailDto) {
 
-        Employee employee = EmployeeMapper.INSTANCE.toEntity(employeeDto);
-        employee = employeeRepo.saveAndFlush(employee);
-        return EmployeeMapper.INSTANCE.toDto(employee);
+        Mail mail = EmployeeMapper.INSTANCE.toEntity(mailDto);
+        mail = employeeRepo.saveAndFlush(mail);
+        return EmployeeMapper.INSTANCE.toDto(mail);
     }
 
     @Override
-    public EmployeeDto findById(Long id) {
+    public MailDto findById(Long id) {
 
-        Employee employee = employeeRepo.findById(id).get();
+        Mail mail = employeeRepo.findById(id).get();
 
-        return EmployeeMapper.INSTANCE.toDto(employee);
+        return EmployeeMapper.INSTANCE.toDto(mail);
     }
 
     @Override
-    public List<EmployeeDto> findAll() {
+    public List<MailDto> findAll() {
 
         return EmployeeMapper.INSTANCE.toDtos(employeeRepo.findAll());
     }

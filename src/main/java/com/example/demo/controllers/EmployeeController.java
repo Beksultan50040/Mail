@@ -1,8 +1,12 @@
 package com.example.demo.controllers;
 
-import com.example.demo.models.dto.EmployeeDto;
+import com.example.demo.feign.ClientFeign;
+import com.example.demo.models.dto.ClientDto;
+import com.example.demo.models.dto.MailDto;
 import com.example.demo.services.EmployeeService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,23 +19,43 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+
+    @Autowired
+    Environment env;
+
+    @Autowired
+    ClientFeign clientFeign;
+
+    @GetMapping("/healthCheck")
+    public String healthCheck() {
+
+
+
+        return "It's  Working port: " + env.getProperty("local.server.port");
+    }
+
     @PostMapping("/save")
-    public EmployeeDto save(@RequestBody EmployeeDto employeeDto){
-        return employeeService.save(employeeDto);
+    public MailDto save(@RequestBody MailDto mailDto){
+        return employeeService.save(mailDto);
     }
 
     @PutMapping("/update")
-    public EmployeeDto update(@RequestBody EmployeeDto employeeDto){
-        return employeeService.update(employeeDto);
+    public MailDto update(@RequestBody MailDto mailDto){
+        return employeeService.update(mailDto);
     }
 
     @GetMapping("/{id}")
-    public EmployeeDto findById(@PathVariable Long id){
+    public MailDto findById(@PathVariable Long id){
         return employeeService.findById(id);
     }
 
     @GetMapping("/findAll")
-    public List<EmployeeDto> findAll(){
+    public List<MailDto> findAll(){
         return employeeService.findAll();
+    }
+
+    @PostMapping("/check/openFeign/client")
+    public ClientDto check(@RequestBody ClientDto clientDto){
+        return clientFeign.saveClient(clientDto);
     }
 }

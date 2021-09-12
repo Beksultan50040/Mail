@@ -1,8 +1,8 @@
 package com.example.demo.mappers;
 
 
-import com.example.demo.models.Employee;
-import com.example.demo.models.dto.EmployeeDto;
+import com.example.demo.models.Mail;
+import com.example.demo.models.dto.MailDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -13,8 +13,8 @@ public interface EmployeeMapper {
 
     EmployeeMapper INSTANCE = Mappers.getMapper(EmployeeMapper.class);
 
-    Employee toEntity(EmployeeDto employeeDto);
-    EmployeeDto toDto(Employee employee);
+    Mail toEntity(MailDto mailDto);
+    MailDto toDto(Mail mail);
 
-    List<EmployeeDto> toDtos(List<Employee> employeeList);
+    List<MailDto> toDtos(List<Mail> mailList);
 }

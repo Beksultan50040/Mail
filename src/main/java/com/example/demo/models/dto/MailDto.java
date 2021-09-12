@@ -3,14 +3,12 @@ package com.example.demo.models.dto;
 import lombok.Data;
 
 @Data
-public class EmployeeDto {
+public class MailDto {
 
 
     private Long id;
 
-    private String lastName;
-    private String firstName;
+    private String name;
     private String email;
-    private String department;
     private String status;
 }

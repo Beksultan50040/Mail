@@ -1,13 +1,13 @@
 package com.example.demo.services;
 
-import com.example.demo.models.dto.EmployeeDto;
+import com.example.demo.models.dto.MailDto;
 
 import java.util.List;
 
 public interface EmployeeService {
 
-    EmployeeDto save(EmployeeDto employeeDto);
-    EmployeeDto update(EmployeeDto employeeDto);
-    EmployeeDto findById(Long id);
-    List<EmployeeDto> findAll();
+    MailDto save(MailDto mailDto);
+    MailDto update(MailDto mailDto);
+    MailDto findById(Long id);
+    List<MailDto> findAll();
 }
