@@ -19,14 +19,12 @@ public class Mail {
     @NotNull(message="name cannot be null")
     private String name;
 
-    @NotNull(message = "Email cannot be null")
-    @Email
-    private String email;
-
-
     @NotNull(message="Status cannot be null")
     private String status;
 
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
 
 
 

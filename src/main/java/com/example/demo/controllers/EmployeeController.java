@@ -54,8 +54,13 @@ public class EmployeeController {
         return employeeService.findAll();
     }
 
-    @PostMapping("/check/openFeign/client")
-    public ClientDto check(@RequestBody ClientDto clientDto){
-        return clientFeign.saveClient(clientDto);
+    @GetMapping("/check/openFeign/clientById")
+    public ClientDto check(@RequestParam Long id){
+        return clientFeign.findById(id);
+    }
+
+    @GetMapping("/check/openFeign/AllClients")
+    public List<ClientDto> findAllClients(){
+        return clientFeign.findAll();
     }
 }
