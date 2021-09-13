@@ -1,6 +1,5 @@
 package com.example.demo.controllers;
 
-import com.example.demo.feign.ClientFeign;
 import com.example.demo.models.dto.ClientDto;
 import com.example.demo.models.dto.MailDto;
 import com.example.demo.services.EmployeeService;
@@ -23,13 +22,10 @@ public class EmployeeController {
     @Autowired
     Environment env;
 
-    @Autowired
-    ClientFeign clientFeign;
+
 
     @GetMapping("/healthCheck")
     public String healthCheck() {
-
-
 
         return "It's  Working port: " + env.getProperty("local.server.port");
     }
@@ -45,7 +41,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public MailDto findById(@PathVariable Long id){
+    public MailDto findById(@RequestParam Long id){
         return employeeService.findById(id);
     }
 
@@ -54,13 +50,5 @@ public class EmployeeController {
         return employeeService.findAll();
     }
 
-    @GetMapping("/check/openFeign/clientById")
-    public ClientDto check(@RequestParam Long id){
-        return clientFeign.findById(id);
-    }
 
-    @GetMapping("/check/openFeign/AllClients")
-    public List<ClientDto> findAllClients(){
-        return clientFeign.findAll();
-    }
 }
