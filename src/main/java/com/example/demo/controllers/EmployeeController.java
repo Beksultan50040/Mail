@@ -41,7 +41,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public MailDto findById(@RequestParam Long id){
+    public MailDto findById(@PathVariable Long id){
         return employeeService.findById(id);
     }
 
